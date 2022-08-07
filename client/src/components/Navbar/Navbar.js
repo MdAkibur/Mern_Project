@@ -17,10 +17,13 @@ const Navbar = () => {
      
 
     const logout = () => {
-        dispatch({ type: 'LOGOUT'});
 
-        navigate('/');
+        dispatch({ type: 'LOGOUT'});
+        
+        navigate('/auth');
+    
         setUser(null);
+        
     };
 
     useEffect(() => {

@@ -54,7 +54,7 @@ const Auth = () => {
     try {
        dispatch({ type: AUTH, data: { result, token } });
 
-       navigate('/'); //instead of history i use navigate
+       navigate('/'); //instead of// history i use navigate
     }catch (error) {
       console.log(error);
     }};

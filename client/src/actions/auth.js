@@ -1,9 +1,7 @@
 import { AUTH } from '../constants/actionTypes';
-
 import * as api from '../api';
 
 
-import { Navigate } from 'react-router-dom';
 
 export const signin = (formData, navigate) => async (dispatch) => {
     try {
