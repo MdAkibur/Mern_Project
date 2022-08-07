@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionTypes';
+import { AUTH } from '../constants/actionTypes';
 
 import * as api from '../api';
 import { Navigate } from 'react-router-dom';
