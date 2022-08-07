@@ -19,7 +19,7 @@ const Auth = () => {
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false); 
     const [isSignup, setIsSignup] = useState(false);
-    const [formData, setFormData] = useState(initialState);
+    const [form, setForm] = useState(initialState);
     const dispatch = useDispatch();
     const navigate = useNavigate(); //instead of history i use navigate
     
@@ -39,10 +39,7 @@ const Auth = () => {
         }
 
     };
-    const handleChange = (e) =>{
-        setFormData({ ...formData, [e.target.name]: e.target.value});
-
-    };
+    const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
@@ -57,7 +54,7 @@ const Auth = () => {
     try {
        dispatch({ type: AUTH, data: { result, token } });
 
-       navigate.push('/'); //instead of history i use navigate
+       navigate('/'); //instead of history i use navigate
     }catch (error) {
       console.log(error);
     }};
