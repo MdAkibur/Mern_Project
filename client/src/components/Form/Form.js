@@ -4,6 +4,7 @@ import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
 import useStyles from './styles'; 
 import { createPost, updatePost } from '../../actions/posts';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 
 const Form = ({ currentId, setCurrentId }) => {
@@ -12,9 +13,11 @@ const Form = ({ currentId, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('profile'));
+  const navigate = useNavigate();
 
 
   useEffect(() => {
+    if (!post?.title) clear();
     if (post) setPostData(post);
   }, [post]);
 
@@ -33,6 +36,8 @@ const Form = ({ currentId, setCurrentId }) => {
       dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
       clear();
     }
+    clear();
+    navigate('/');
   };
 
   if (!user?.result?.name) {
@@ -48,7 +53,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
 
     return(
-      <Paper className={classes.paper}>
+      <Paper className={classes.paper} elevation= {6}>
          <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
          <Typography variant="h6">{currentId ? 'Editing' : 'Creating'} a Memory</Typography>
          
