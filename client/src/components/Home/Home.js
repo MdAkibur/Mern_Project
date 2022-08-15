@@ -37,10 +37,11 @@ const Home = () => {
   }, [currentId, dispatch]);
 
   const searchPost = () => {
-    if (search.trim()) {
+    if (search.trim() || tags) {
       dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
+      navigate(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
     } else {
-      navigate('/');
+      navigate('/posts');
     }
   };
 
@@ -50,9 +51,9 @@ const Home = () => {
     }
   };
 
-  const handleAddChip = (tag) => setTags([...tags, tag]);
+  const handleAdd = (tag) => setTags([...tags, tag]);
 
-  const handleDeleteChip = (chipToDelete) => setTags(tags.filter((tag) => tag !== chipToDelete));
+  const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
 
   return (
     <Grow in>
@@ -63,12 +64,20 @@ const Home = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
           <AppBar className={classes.appBarSearch} position="static" color="inherit">
-          <TextField name="search" variant="outlined" label="Search Memories" onKeyDown={handleKeyPress} fullWidth value={search} onChange={(e) => setSearch(e.target.value)} />
+          <TextField 
+             name="search" 
+             variant="outlined" 
+             label="Search Memories" 
+             onKeyPress={handleKeyPress} 
+             fullWidth 
+             value={search} 
+             onChange={(e) => setSearch(e.target.value)} 
+          />
           <ChipInput
                 style={{ margin: '10px 0' }}
                 value={tags}
-                onAdd= {handleAddChip}
-                onDelete={handleDeleteChip}
+                onAdd= {handleAdd}
+                onDelete={handleDelete}
                 label="Search Tags"
                 variant="outlined"
               />
