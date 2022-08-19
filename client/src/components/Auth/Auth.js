@@ -4,7 +4,7 @@ import { GoogleLogin } from 'react-google-login';
 
 import Icon from './icon';
 import { useDispatch } from 'react-redux';
-import {useNavigate} from 'react-router-dom' //instead of history i use navigate
+import {useNavigate} from 'react-router-dom' 
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 import { AUTH } from '../../constants/actionTypes';
@@ -21,7 +21,7 @@ const Auth = () => {
     const [isSignup, setIsSignup] = useState(false);
     const [form, setForm] = useState(initialState);
     const dispatch = useDispatch();
-    const navigate = useNavigate(); //instead of history i use navigate
+    const navigate = useNavigate(); 
     
     
 
@@ -54,7 +54,7 @@ const Auth = () => {
     try {
        dispatch({ type: AUTH, data: { result, token } });
 
-       navigate('/'); //instead of// history i use navigate
+       navigate('/'); 
     }catch (error) {
       console.log(error);
     }};
