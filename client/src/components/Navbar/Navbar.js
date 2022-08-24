@@ -5,8 +5,8 @@ import { AppBar, Typography , Avatar, Toolbar, Button } from '@material-ui/core'
 import useStyles from './styles';
 
 
-import memoriesLogo from '../../images/memoriesLogo.png';
-import memoriesText from '../../images/memoriesText.png';
+import memoriesLogo from '../../images/weshareLogo.png';
+import memoriesText from '../../images/weshareText.png';
 
 
 import { useDispatch } from 'react-redux';

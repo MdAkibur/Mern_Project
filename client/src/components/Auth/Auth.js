@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import {useNavigate} from 'react-router-dom' 
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
-import { AUTH } from '../../constants/actionTypes';
+//import { AUTH } from '../../constants/actionTypes';
 
 import useStyles from './styles';
 import Input from './Input';
@@ -48,23 +48,24 @@ const Auth = () => {
     };
     
     const googleSuccess = async (res) => {
-        const result = res?.profileObj;
+        
+        const result = res?.profileObj; 
         const token = res?.tokenId;
 
-    try {
-       dispatch({ type: AUTH, data: { result, token } });
+        try {
+            dispatch({type: 'AUTH', data: { result, token } });
 
-       navigate('/'); 
-    }catch (error) {
-      console.log(error);
-    }};
-
+            navigate('/');
+        } catch(error) {
+            console.log(error);
+        }
+    };
 
     const googleFailure = (error) => {
         console.log(error);
-        console.log('Google Sign In was unsuccessful. Try again later');
-
+        console.log("Google Sign In was unsuccessful! Try Again Later");
     };
+    
 
     return(
         <Container component="main" maxWidth="xs">
@@ -95,7 +96,7 @@ const Auth = () => {
 
                     </Button>
                     <GoogleLogin
-                        clientId="563635337763-5crm26vgnqb5t0eenm34fbp0pn8fpslm.apps.googleusercontent.com"
+                        clientId="457370522940-6btgiichqpelm1rocc999p8lsq9kn38t.apps.googleusercontent.com"
                         render={(renderProps) => (
                             <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
                                 Google Sign In
@@ -105,7 +106,7 @@ const Auth = () => {
                         onSuccess={googleSuccess}
                         onFailure={googleFailure}
                         cookiePolicy="single_host_origin"
-                        />    
+                    />    
 
                     <Grid container justifyContent="flex-end">
                         <Grid item>
