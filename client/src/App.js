@@ -4,10 +4,10 @@ import { Container } from '@material-ui/core';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 
-import Navbar from './components/Navbar/Navbar';
-import Home from './components/Home/Home';
-import Auth from './components/Auth/Auth';
-import PostDetails from './components/PostDetails/PostDetails';
+import Navbar from './view/Navbar/Navbar';
+import Home from './view/Home/Home';
+import Auth from './view/Auth/Auth';
+import PostDetails from './view/PostDetails/PostDetails';
 
 const App = () => {
 

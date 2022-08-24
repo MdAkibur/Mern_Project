@@ -14,7 +14,7 @@ const CommentSection = ({ post }) => {
     const commentsRef = useRef();
 
     const handleComment = async () => {
-        const finalComment = `${user?.result?.name}: ${comment}`;
+        //const finalComment = `${user?.result?.name}: ${comment}`;
 
         const newComments = await dispatch(commentPost(`${user?.result?.name}: ${comment}`, post._id));
 
